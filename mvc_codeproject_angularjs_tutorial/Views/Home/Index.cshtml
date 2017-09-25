@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Employee Database";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+<div ng-controller="myCntrl" style="text-align: center">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <h1> Employee Details Page</h1>
+
+    <br />
+
+    <input type="button" class="btn btn-primary" value=" Add Employee" ng-click="AddEmployeeDiv()" />
+
+    <div class="divList">
+        <h2 class="mast-head">Employee List</h2>
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Name</b></td>
+                <td><b>Email</b></td>
+                <td><b>Mobile</b></td>
+                <td><b>Actions</b></td>
+            </tr>
+            <tr ng-repeat="employee in employees">
+                <td>
+                    {{employee.Id}}
+                </td>
+                <td>
+                    {{employee.name}}
+                </td>
+                <td>
+                    {{employee.email}}
+                </td>
+                <td>
+                    {{employee.mobile_no}}
+                </td>
+                <td>
+                    <input type="button" ng-click="editEmployee(employee)" class="btn btn-primary" value="Edit" />
+                    <input type="button" ng-click="deleteEmployee(employee)" class="btn btn-primary" value="Delete" />
+                    @*<span ng-click="editEmployee(employee)" class="btnAdd">Edit</span>*@
+                    @*<span ng-click="deleteEmployee(employee)" class="btnRed">Delete</span>*@
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-show="divEmployee">
+        <p class="divHead">{{Action}} Employee</p>
+        <table class="table-condensed" align="center">
+            <tr>
+                <td><b>Id</b></td>
+                <td>
+                    <input type="text" ng-model="employeeId" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Name</b></td>
+                <td>
+                    <input type="text" ng-model="employeeName" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Email</b></td>
+                <td>
+                    <input type="text" ng-model="employeeEmail" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Mobile</b></td>
+                <td>
+                    <input type="text" ng-model="employeeMobile" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="btn btn-primary" value="Save" ng-click="AddUpdateEmployee()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
